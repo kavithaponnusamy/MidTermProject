@@ -1,0 +1,62 @@
+﻿@model MidTermProject.ViewModels.StudentFormViewModel
+@{
+    ViewBag.Title = "StudentForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Student</h2>
+
+@Html.ValidationSummary()
+@using (Html.BeginForm("Update", "Student"))
+{
+    @Html.HiddenFor(s => s.Student.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(s => s.Student.FirstName)
+        @Html.TextBoxFor(s => s.Student.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Student.FirstName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(s => s.Student.LastName)
+        @Html.TextBoxFor(s => s.Student.LastName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(s => s.Student.BirthDate)
+        @Html.TextBoxFor(s => s.Student.BirthDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Student.BirthDate)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(s => s.Student.CourseId)
+        @Html.DropDownListFor(s => s.Student.CourseId, new SelectList(Model.Courses, "Id", "CourseName"), "Select Course Name", new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Student.CourseId)
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(s => s.Student.CourseStatus)
+        @Html.DropDownListFor(s => s.Student.CourseStatus, new List<SelectListItem>
+            {
+            new SelectListItem{ Text="In Progress", Value = "1" },
+            new SelectListItem{ Text="Completed", Value = "2" }
+            }, "Select Status", new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Student.CourseStatus)
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(s => s.Student.Grade)
+        @Html.TextBoxFor(s => s.Student.Grade, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Student.Grade)
+
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    @*<script type="text/javascript">
+        $('#Student_LastName').focus();
+    </script>*@
+
+}
+

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MidTermProject.Models.Student>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Students</h2>
+<p>@Html.ActionLink("New Student", "Create", "Student", null, new { @class = "btn btn-primary" })</p>
+
+@if (!Model.Any())
+{
+    <p>We don't have any customers yet.</p>
+}
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Student Name</th>
+            <th>Course Name</th>
+            <th>Course Enrolled Date</th>
+            <th>Course Status</th>
+            <th>Grade</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var student in Model)
+        {
+            <tr>
+                @*<td>@Html.ActionLink(student.FirstName + " " + student.LastName, "Edit", "Student", new { id = student.Id }, null)</td>*@
+                <td>@student.FirstName @student.LastName</td>
+                <td>@student.Course.CourseName</td>
+                <td>@student.CourseEnrolledDate</td>
+                @if (student.CourseStatus == 0)
+                {
+                    <td>Progress</td>
+                }
+                else
+                {
+                    <td>Completed</td>
+                }
+                <td>@student.Grade</td>
+                <td>
+                    <a href="Student/Edit/@student.Id" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>  
+                    <a href="Student/Delete/@student.Id" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+

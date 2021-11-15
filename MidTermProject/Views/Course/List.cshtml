@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MidTermProject.Models.Course>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Courses</h2>
+<p>@Html.ActionLink("New Course", "Create", "Course", null, new { @class = "btn btn-primary" })</p>
+
+@if (!Model.Any())
+{
+    <p>We don't have any customers yet.</p>
+}
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Description</th>
+            <th>Tutor Name</th>
+            <th>Rating</th>
+            <th width= "80px">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(course.CourseName, "Edit", "Course", new { id = course.Id }, null)</td>
+                <td>@course.CourseDescription</td>
+                <td>@course.TutorName</td>
+                <td>@course.CourseRating</td>
+                <td>
+                    <a href="Course/Edit/@course.Id" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                    <a href="Course/Delete/@course.Id" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
