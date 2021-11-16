@@ -33,7 +33,7 @@
                 <td>@student.FirstName @student.LastName</td>
                 <td>@student.Course.CourseName</td>
                 <td>@student.CourseEnrolledDate</td>
-                @if (student.CourseStatus == 0)
+                @if (student.CourseStatus == 1)
                 {
                     <td>Progress</td>
                 }
@@ -43,8 +43,8 @@
                 }
                 <td>@student.Grade</td>
                 <td>
-                    <a href="Student/Edit/@student.Id" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>  
-                    <a href="Student/Delete/@student.Id" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                    <a href="~/Student/Edit/@student.Id" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>  
+                    <a href="~/Student/Delete/@student.Id" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                 </td>
             </tr>
 

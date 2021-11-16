@@ -11,7 +11,7 @@ namespace MidTermProject.Controllers
 {
     public class StudentController : Controller
     {
-        // GET: Student
+        
         public MidtermDbContext _context;
 
         public StudentController()
@@ -23,11 +23,15 @@ namespace MidTermProject.Controllers
         {
             _context.Dispose();
         }
+
+        //Students List
         public ActionResult List()
         {
             var students = _context.Students.Include(s => s.Course).ToList();
             return View(students);
         }
+
+        //Creating a new student record
         public ActionResult Create()
         {
             var courseNames = _context.Courses.ToList();
@@ -39,12 +43,13 @@ namespace MidTermProject.Controllers
             return View("StudentForm", viewModel);
         }
 
+        //1. Adding a new student record
+        //2. Updating existing student record
         [HttpPost]
         public ActionResult Update(Student student)
         {
             if (!ModelState.IsValid)
             {
-                
                 var viewModel = new StudentFormViewModel
                 {
                     Student = student,
@@ -70,6 +75,8 @@ namespace MidTermProject.Controllers
             _context.SaveChanges();
             return RedirectToAction("List", "Student");
         }
+
+        //Getting the student record to edit
         public ActionResult Edit(int id)
         {
             var student = _context.Students.SingleOrDefault(s => s.Id == id);
@@ -84,6 +91,8 @@ namespace MidTermProject.Controllers
             return View("StudentForm", viewModel);
 
         }
+
+        //Deleting a student record
         public ActionResult Delete(int id)
         {
             var student = _context.Students.SingleOrDefault(s => s.Id == id);
