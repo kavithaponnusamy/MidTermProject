@@ -8,7 +8,7 @@ namespace MidTermProject.Models
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             var student = (Student)validationContext.ObjectInstance;
-            var age = DateTime.Today.Year - student.BirthDate.Year;
+            var age = DateTime.Today.Year - student.BirthDate.Value.Year;
 
             var idd = student.CourseId;
 

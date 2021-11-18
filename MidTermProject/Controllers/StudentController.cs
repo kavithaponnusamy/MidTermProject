@@ -34,11 +34,11 @@ namespace MidTermProject.Controllers
         //Creating a new student record
         public ActionResult Create()
         {
-            var courseNames = _context.Courses.ToList();
+            var courses = _context.Courses.ToList();
             var viewModel = new StudentFormViewModel
             {
                 Student = new Student(),
-                Courses = courseNames
+                Courses = courses
             };
             return View("StudentForm", viewModel);
         }

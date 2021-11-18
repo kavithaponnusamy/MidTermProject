@@ -31,7 +31,8 @@ namespace MidTermProject.Controllers
         //Opening the course form
         public ActionResult Create()
         {
-            return View("CourseForm");
+            Course course = new Course();
+            return View("CourseForm", course);
         }
 
         //1. Adding a new course record
@@ -39,6 +40,10 @@ namespace MidTermProject.Controllers
         [HttpPost]
         public ActionResult Update(Course course)
         {
+            if (!ModelState.IsValid)
+            {                
+                return View("CourseForm");
+            }
             if (course.Id == 0)
                 _context.Courses.Add(course);
             else

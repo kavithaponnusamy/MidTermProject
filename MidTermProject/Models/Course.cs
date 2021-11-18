@@ -20,8 +20,22 @@ namespace MidTermProject.Models
 
         [Required]
         [Display(Name = "Course Rating")]
-        [Range(1,10)]
+        [Range(1, 10)]
         public int CourseRating { get; set; }
+        public string Title
+        {
+            get
+            {
+                if (Id != 0)
+                {
+                    return "Edit Course";
+                }
+                else
+                {
+                    return "New Course";
+                }
+            }
 
+        }
     }
 }

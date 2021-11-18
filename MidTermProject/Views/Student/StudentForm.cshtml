@@ -4,9 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New Student</h2>
+<h2>@Model.Title</h2>
 
-@Html.ValidationSummary()
 @using (Html.BeginForm("Update", "Student"))
 {
     @Html.HiddenFor(s => s.Student.Id)
@@ -54,9 +53,6 @@
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
-    @*<script type="text/javascript">
-        $('#Student_LastName').focus();
-    </script>*@
 
 }
 

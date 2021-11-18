@@ -20,7 +20,7 @@ namespace MidTermProject.Models
         [Required]
         [Display(Name = "Date of Birth")]
         [AgeValidation]
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
 
         public Course Course { get; set; }
 
