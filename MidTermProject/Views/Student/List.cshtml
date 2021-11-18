@@ -29,8 +29,8 @@
         @foreach (var student in Model)
         {
             <tr>
-                @*<td>@Html.ActionLink(student.FirstName + " " + student.LastName, "Edit", "Student", new { id = student.Id }, null)</td>*@
-                <td>@student.FirstName @student.LastName</td>
+                <td>@Html.ActionLink(student.FirstName + " " + student.LastName, "Details", "Student", new { id = student.Id }, null)</td>
+                @*<td>@student.FirstName @student.LastName</td>*@
                 <td>@student.Course.CourseName</td>
                 <td>@student.CourseEnrolledDate</td>
                 @if (student.CourseStatus == 1)

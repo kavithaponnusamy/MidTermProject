@@ -1,0 +1,19 @@
+﻿@model MidTermProject.Models.Course
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<h3><b>Course Name: </b>@Model.CourseName</h3>
+<h3><b>Description: </b>@Model.CourseDescription</h3>
+<h3><b>Tutor Name: </b>@Model.TutorName</h3>
+<h3><b>Rating: </b>@Model.CourseRating</h3>
+<br />
+<br />
+@Html.ActionLink("Back to List", "List", "Course")  | @Html.ActionLink("Edit", "Edit", "Course", new { id = Model.Id }, null) | @Html.ActionLink("Delete", "Delete", "Course", new { id = Model.Id }, null)
+
+
+
+
+

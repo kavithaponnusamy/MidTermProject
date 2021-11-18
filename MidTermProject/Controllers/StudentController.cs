@@ -102,5 +102,13 @@ namespace MidTermProject.Controllers
             _context.SaveChanges();
             return RedirectToAction("List", "Student");
         }
+
+        public ActionResult Details(int id)
+        {
+            var student = _context.Students.Include(c => c.Course).SingleOrDefault(s => s.Id == id);
+            if (student == null)
+                return HttpNotFound(); 
+            return View("Details", student);
+        }
     }
 }

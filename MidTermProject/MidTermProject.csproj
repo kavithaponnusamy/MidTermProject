@@ -194,6 +194,8 @@
     <Content Include="Views\Student\StudentForm.cshtml" />
     <Content Include="Views\Course\List.cshtml" />
     <Content Include="Views\Course\CourseForm.cshtml" />
+    <Content Include="Views\Student\Details.cshtml" />
+    <Content Include="Views\Course\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

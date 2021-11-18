@@ -1,0 +1,30 @@
+﻿@model MidTermProject.Models.Student
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<h3><b>Name:</b> @Model.FirstName @Model.LastName</h3>
+<h3><b>Date of Birth:</b> @Model.BirthDate.Value.ToShortDateString()</h3>
+<h3><b>Course Name: </b>@Model.Course.CourseName</h3>
+<h3><b>Course Enrolled Date: </b>@Model.CourseEnrolledDate</h3>
+@if (Model.CourseStatus == 1)
+{
+    <h3><b>Course Status: </b>Progress</h3>
+}
+else
+{
+    <h3><b>Course Status: </b> Completed</h3>
+}
+<h3><b>Grade: </b>@Model.Grade</h3>
+<br />
+<br />
+@Html.ActionLink("Back to List", "List", "Student")  | @Html.ActionLink("Edit", "Edit", "Student", new { id = Model.Id }, null) | @Html.ActionLink("Delete", "Delete", "Student", new { id = Model.Id }, null)
+
+
+
+
+
+
+

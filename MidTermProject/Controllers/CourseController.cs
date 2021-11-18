@@ -77,5 +77,13 @@ namespace MidTermProject.Controllers
             _context.SaveChanges();
             return RedirectToAction("List", "Course");
         }
+
+        public ActionResult Details(int id)
+        {
+            var course = _context.Courses.SingleOrDefault(c => c.Id == id);
+            if (course == null)
+                return HttpNotFound();
+            return View("Details", course);
+        }
     }
 }
