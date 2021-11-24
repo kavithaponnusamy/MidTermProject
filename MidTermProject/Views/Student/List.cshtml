@@ -28,25 +28,37 @@
 
         @foreach (var student in Model)
         {
-            <tr>
-                <td>@Html.ActionLink(student.FirstName + " " + student.LastName, "Details", "Student", new { id = student.Id }, null)</td>
-                @*<td>@student.FirstName @student.LastName</td>*@
-                <td>@student.Course.CourseName</td>
-                <td>@student.CourseEnrolledDate</td>
-                @if (student.CourseStatus == 1)
-                {
-                    <td>Progress</td>
-                }
-                else
-                {
-                    <td>Completed</td>
-                }
-                <td>@student.Grade</td>
+        <tr>
+            <td>@Html.ActionLink(student.FirstName + " " + student.LastName, "Details", "Student", new { id = student.Id }, null)</td>
+            @*<td>@student.FirstName @student.LastName</td>*@
+            <td>@student.Course.CourseName</td>
+            <td>@student.CourseEnrolledDate</td>
+
+            @if (student.CourseStatus == 1)
+            {
+                @*<td>Progress</td>*@
                 <td>
-                    <a href="~/Student/Edit/@student.Id" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>  
-                    <a href="~/Student/Delete/@student.Id" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar" style="width: 65%">Progress</div>
+                    </div>
                 </td>
-            </tr>
+            }
+            else
+            {
+
+                @*<td>Completed</td>*@
+        <td>
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" style="width: 100%">Completed</div>
+            </div>
+        </td>
+            }
+            <td>@student.Grade</td>
+            <td>
+                <a href="~/Student/Edit/@student.Id" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                <a href="~/Student/Delete/@student.Id" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+            </td>
+        </tr>
 
         }
     </tbody>

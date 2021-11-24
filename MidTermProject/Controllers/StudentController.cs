@@ -70,6 +70,7 @@ namespace MidTermProject.Controllers
                 studentInDb.LastName = student.LastName;
                 studentInDb.CourseId = student.CourseId;
                 studentInDb.CourseStatus = student.CourseStatus;
+                studentInDb.BirthDate = student.BirthDate;
                 studentInDb.Grade = student.Grade;
             }
             _context.SaveChanges();
